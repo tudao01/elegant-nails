@@ -1,5 +1,6 @@
 "use client"
 import Link from "next/link"
+import { ThemeToggle } from "./theme-toggle"
 
 export function Header() {
 
@@ -11,57 +12,26 @@ export function Header() {
   ]
 
   return (
-    <header
-      style={{
-        backgroundColor: "white",
-        borderBottom: "1px solid #e5e7eb",
-        boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "0 1rem",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            height: "4rem",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+    <header className="bg-background border-b border-border shadow-sm relative">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex h-16 items-center justify-center">
           {/* Desktop Navigation */}
-          <nav
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "1.5rem",
-            }}
-          >
+          <nav className="hidden md:flex items-center gap-6">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  fontSize: '1.25rem',
-                  color: '#4B5563',
-                  padding: '0.5rem 1rem',
-                  transition: 'color 0.2s ease-in-out',
-                  textDecoration: 'none',
-                }}
-                onMouseOver={(e) => e.currentTarget.style.color = '#000000'}
-                onMouseOut={(e) => e.currentTarget.style.color = '#4B5563'}
+                className="text-foreground/70 hover:text-foreground transition-colors text-lg font-medium"
               >
                 {item.name}
               </Link>
             ))}
           </nav>
+
+          {/* Theme Toggle - Positioned absolutely on the right */}
+          <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </header>

@@ -54,7 +54,7 @@ export function Hero() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-900 rounded-xl p-4 shadow-lg border">
+            <div className="absolute -bottom-6 -left-6 bg-card rounded-xl p-4 shadow-lg border">
               <div className="text-sm font-medium">Next Available</div>
               <div className="text-2xl font-bold text-pink-500">Today 2:30 PM</div>
             </div>
