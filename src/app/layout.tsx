@@ -7,8 +7,8 @@ import { ThemeProvider } from "next-themes"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Next.js Community Starter",
-  description: "A modern Next.js starter with theme support",
+  title: "D&D Nails Spa - Professional Nail Care",
+  description: "Professional nail care services for ladies and gentlemen. Located in Brownsville, TX. Manicures, pedicures, gel nails, and nail art.",
 }
 
 export default function RootLayout({

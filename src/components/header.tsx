@@ -1,8 +1,10 @@
 "use client"
 import Link from "next/link"
-import { ThemeToggle } from "./theme-toggle"
+import { useState } from "react"
+import { Menu, X } from "lucide-react"
 
 export function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -28,11 +30,38 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Theme Toggle - Positioned absolutely on the right */}
-          <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
-            <ThemeToggle />
-          </div>
+          {/* Mobile menu button */}
+          <button
+            type="button"
+            className="md:hidden absolute right-4 inline-flex items-center justify-center p-2 rounded-md text-foreground/70 hover:text-foreground hover:bg-muted transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <span className="sr-only">Open main menu</span>
+            {mobileMenuOpen ? (
+              <X className="block h-6 w-6" />
+            ) : (
+              <Menu className="block h-6 w-6" />
+            )}
+          </button>
         </div>
+
+        {/* Mobile Navigation */}
+        {mobileMenuOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 border-t border-border">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="block px-3 py-2 text-base font-medium text-foreground/70 hover:text-foreground hover:bg-muted rounded-md transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </header>
   )
