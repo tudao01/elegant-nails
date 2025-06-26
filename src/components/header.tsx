@@ -4,7 +4,6 @@ import { useState } from "react"
 import Link from "next/link"
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navigation = [
     { name: "Home", href: "/" },
